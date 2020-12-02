@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import Button from "@material-ui/core/Button";
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -16,8 +16,16 @@ function Hook_CRUD() {
     const [userDetails, setUserDetails] = useState({});
     const [list, setList] = useState([]);
     const [isEditable, setEditableIndex] = useState(null);
-    const [showForm, setShowForm] = React.useState(true);
+    const [showForm, setShowForm] = React.useState(false);
     const [errors, setValidation] = React.useState({});
+
+     useEffect(() =>{
+         let data = [];
+         if (JSON.parse(localStorage.getItem("list")) !== null){
+             data = JSON.parse(localStorage.getItem("list"));
+         }
+         setList(data);
+    },[]);
 
 
     const validate = (name, value) => {
@@ -81,8 +89,11 @@ function Hook_CRUD() {
             if (isEditable !== null && isEditable !== -1) {
                 list[isEditable] = userDetails;
             } else {
-                setList([...list, userDetails]);
+                list.push(userDetails);
+                setList(list);
+                // setList([...list, userDetails]);
             }
+            localStorage.setItem("list",JSON.stringify(list));
             setUserDetails({});
             setEditableIndex(null);
             setShowForm(!showForm);
@@ -95,9 +106,9 @@ function Hook_CRUD() {
         setEditableIndex(index);
     }
     const DeleteData = (index) => {
-        setList(list.filter((value, i) => {
-            return i !== index;
-        }));
+        const filterData = list.filter((value, i) => i !== index);
+        localStorage.setItem("list", JSON.stringify(filterData));
+        setList(filterData);
     }
     return (
         <>

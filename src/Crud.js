@@ -148,7 +148,6 @@ class OrgForm extends React.Component {
         this.setState({
             list
         });
-        localStorage.removeItem("list");
         localStorage.setItem("list", JSON.stringify(list));
     }
 
