@@ -106,7 +106,7 @@ function Hook_CRUD() {
                 <div className="row">
                     <div className="table-responsive">
                         <table className="table">
-                            <thead>
+                            <thead className="text-center">
                             <tr className="table-striped">
                                 <th>First name</th>
                                 <th>Last name</th>
@@ -114,7 +114,7 @@ function Hook_CRUD() {
                                 <th>Action</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="text-center">
                             {Array.isArray(list) && list.map((item, index) => {
                                 return (
                                     <tr key={index} id={index}>
