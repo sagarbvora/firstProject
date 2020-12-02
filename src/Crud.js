@@ -1,5 +1,6 @@
 import React from 'react';
 import "./CrudData.css";
+import {Col,Row} from 'react-bootstrap';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import Button from '@material-ui/core/Button';
