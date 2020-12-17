@@ -125,19 +125,8 @@ class OrgForm extends React.Component {
     };
     EditData = (index) => {
         const {list} = this.state;
-        const orgUpdate = {
-            Name: list[index].Name,
-            Abbrevlation: list[index].Abbrevlation,
-            Contact_Email: list[index].Contact_Email,
-            Website: list[index].Website,
-            Nr_Employees: list[index].Nr_Employees,
-            Revenue: list[index].Revenue,
-            Profit: list[index].Profit,
-            AuthorAnonymous: list[index].AuthorAnonymous
-        };
-        // console.log(index);
         this.setState({
-            organization: orgUpdate,
+            organization: list[index],
             isEditable: index
         });
     }
